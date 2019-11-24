@@ -5,7 +5,7 @@ import Confirmation from './Confirmation';
 
 class MainForm extends Component {
     state = {
-        step: 2,
+        step: 1,
         title: '',
         firstName: '',
         lastName: '',
