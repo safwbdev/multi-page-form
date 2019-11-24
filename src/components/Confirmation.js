@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import Moment from 'moment';
 
 class Confirmation extends Component{
     saveAndContinue = (e) => {
@@ -61,7 +62,7 @@ class Confirmation extends Component{
                         lg={10}
                         sm={10}
                         xs={6} >
-                        {dob}
+                        {Moment(dob).format('YYYY-MM-DD')}
                     </Grid>
                     <Grid 
                         item 
@@ -180,7 +181,7 @@ class Confirmation extends Component{
                         lg={10}
                         sm={10}
                         xs={6} >
-                       { weddingDate }
+                        {Moment(weddingDate).format('YYYY-MM-DD')}
                     </Grid>
                     {/* <Grid 
                         item 

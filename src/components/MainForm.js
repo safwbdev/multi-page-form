@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import FormOne from './FormOne';
 import FormTwo from './FormTwo';
 import Confirmation from './Confirmation';
+import Moment from 'moment';
 
 class MainForm extends Component {
     state = {
@@ -9,7 +10,7 @@ class MainForm extends Component {
         title: '',
         firstName: '',
         lastName: '',
-        dob: '',
+        dob: new Date(),
         gender: '',
         email: '',
         tel: '',
@@ -48,7 +49,7 @@ class MainForm extends Component {
             title: '',
             firstName: '',
             lastName: '',
-            dob: '',
+            dob: new Date(),
             gender: '',
             email: '',
             tel: '',
@@ -64,6 +65,15 @@ class MainForm extends Component {
     handleChange = input => event => {
         this.setState({ [input] : event.target.value })
     }
+
+    saveDate = input => date => {
+    // saveDOB =  date => {
+
+        // console.log(Moment(date).format('YYYY-MM-DD'))
+        console.log(date)
+        // this.setState({ [input]: Moment(date).format('YYYY-MM-DD') })
+        this.setState({ [input]: date })
+    }
     
     render(){
         const {step} = this.state;
@@ -74,6 +84,7 @@ class MainForm extends Component {
             return <FormOne 
                     nextStep={this.nextStep} 
                     handleChange = {this.handleChange}
+                    saveDate={this.saveDate}
                     values={values}
                     />
         case 2:
@@ -81,6 +92,7 @@ class MainForm extends Component {
                     nextStep={this.nextStep}
                     prevStep={this.prevStep}
                     handleChange = {this.handleChange}
+                    saveDate={this.saveDate}
                     tncAgree = {this.tncAgree}
                     values={values}
                     />

@@ -6,6 +6,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import DatePicker from "react-datepicker";
 
 class FormOne extends Component{
 
@@ -13,6 +14,8 @@ class FormOne extends Component{
         e.preventDefault()
         this.props.nextStep()
     }
+
+    
 
     render(){
         const { values } = this.props;
@@ -87,14 +90,11 @@ class FormOne extends Component{
                         lg={6}
                         sm={6} 
                         xs={12} >
-                        <TextField 
-                            id="dob" 
-                            label="Date of Birth" 
-                            variant="outlined"
-                            placeholder='Date of Birth'
-                            onChange={this.props.handleChange('dob')}
-                            defaultValue={values.dob}
-                            fullWidth
+                        <DatePicker
+                                selected={values.dob}
+                                className="MuiInputBase-input MuiOutlinedInput-input"
+                                dateFormat="yyyy-mm-dd"
+                                onChange={this.props.saveDate('dob')}
                             />
                     </Grid>
                     <Grid 

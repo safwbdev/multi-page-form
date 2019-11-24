@@ -14,6 +14,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import DatePicker from "react-datepicker";
 
 
 class FormTwo extends Component{
@@ -109,15 +110,26 @@ class FormTwo extends Component{
                         lg={6}
                         sm={6} 
                         xs={12} >
-                        <TextField 
-                            id="weddingDate" 
-                            label="Wedding Date" 
-                            variant="outlined"
-                            placeholder='Wedding Date'
-                            onChange={this.props.handleChange('weddingDate')}
-                            defaultValue={values.weddingDate}
-                            fullWidth
-                                />
+
+                            {values.purpose === "Wedding" ? (
+                                // <TextField 
+                                // id="weddingDate" 
+                                // label="Wedding Date" 
+                                // variant="outlined"
+                                // placeholder='Wedding Date'
+                                // onChange={this.props.handleChange('weddingDate')}
+                                // defaultValue={values.weddingDate}
+                                // fullWidth
+                                //     />
+                                <DatePicker
+                                selected={new Date}
+                                className=""
+                                dateFormat="yyyy-mm-dd"
+                                onChange={this.props.saveDate('weddingDate')}
+                            />
+                            ) : ("")
+        }
+                        
                     </Grid>
                     <Grid 
                         item 
