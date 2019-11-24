@@ -112,15 +112,6 @@ class FormTwo extends Component{
                         xs={12} >
 
                             {values.purpose === "Wedding" ? (
-                                // <TextField 
-                                // id="weddingDate" 
-                                // label="Wedding Date" 
-                                // variant="outlined"
-                                // placeholder='Wedding Date'
-                                // onChange={this.props.handleChange('weddingDate')}
-                                // defaultValue={values.weddingDate}
-                                // fullWidth
-                                //     />
                                 <DatePicker
                                 selected={new Date}
                                 className=""
@@ -165,12 +156,24 @@ class FormTwo extends Component{
                         lg={6}
                         sm={6} 
                         xs={6} >
-                        <Button 
-                            variant="contained"
-                            onClick={this.saveAndContinue}
-                            color="primary">
-                            Next
-                        </Button>
+                        {((values.amount != "") && (values.tenure != "") && (values.purpose != "") && (values.tnc) )
+                        
+                         ? 
+                            (
+                                <Button 
+                                    variant="contained"
+                                    onClick={this.saveAndContinue}
+                                    color="primary">
+                                    Next
+                                </Button>
+                            ) : (
+                                <Button 
+                                    variant="contained"
+                                    disabled
+                                    color="primary">
+                                    Next
+                                </Button>)
+                        }
                     </Grid>
                 </Grid>
             </div>

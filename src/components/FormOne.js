@@ -159,12 +159,24 @@ class FormOne extends Component{
                         lg={12}
                         sm={12} 
                         xs={12} >
-                        <Button 
-                            variant="contained"
-                            onClick={this.saveAndContinue}
-                            color="primary">
-                            Next
-                        </Button>
+                        {
+                        ((values.title != "") && (values.firstName != "") && (values.lastName != "") && (values.dob != "") && (values.email != "") && (values.tel != ""))
+                        ? 
+                            (
+                                <Button 
+                                    variant="contained"
+                                    onClick={this.saveAndContinue}
+                                    color="primary">
+                                    Next
+                                </Button>
+                            ) : (
+                                <Button 
+                                    variant="contained"
+                                    disabled
+                                    color="primary">
+                                    Next
+                                </Button>)
+                        }
                     </Grid>
                 </Grid>
             </div>
