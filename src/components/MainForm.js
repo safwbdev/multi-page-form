@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import FormOne from './FormOne';
 import FormTwo from './FormTwo';
 import Confirmation from './Confirmation';
-import Moment from 'moment';
 
 class MainForm extends Component {
     state = {
@@ -46,32 +45,25 @@ class MainForm extends Component {
     restore = () => {
         this.setState({
             step: 1,
-            title: '',
-            firstName: '',
-            lastName: '',
+            title: undefined,
+            firstName: undefined,
+            lastName: undefined,
             dob: new Date(),
-            gender: '',
-            email: '',
-            tel: '',
+            gender: undefined,
+            email: undefined,
+            tel: undefined,
             amount: '',
             tenure: '',
             purpose: '',
             weddingDate: '',
-            tnc: false
+            tnc: false,
         })
     }
-
-
     handleChange = input => event => {
         this.setState({ [input] : event.target.value })
     }
 
     saveDate = input => date => {
-    // saveDOB =  date => {
-
-        // console.log(Moment(date).format('YYYY-MM-DD'))
-        console.log(date)
-        // this.setState({ [input]: Moment(date).format('YYYY-MM-DD') })
         this.setState({ [input]: date })
     }
     
@@ -103,6 +95,8 @@ class MainForm extends Component {
                     restoreBack={this.restore}
                     values={values}
                     />
+        default:
+            return null
         }
     }
 }

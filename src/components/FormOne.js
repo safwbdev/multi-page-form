@@ -10,9 +10,81 @@ import DatePicker from "react-datepicker";
 
 class FormOne extends Component{
 
+    state = {
+        titleRequired: false,
+        fnameRequired: false,
+        lnameRequired: false,
+        emailRequired: false,
+        emailFormat: false,
+        telRequired: false,
+        telFormat: false,
+    }
+    
     saveAndContinue = (e) => {
         e.preventDefault()
-        this.props.nextStep()
+        let { values } = this.props;
+        let passCount = 0;
+        const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
+
+        if (values.title === ''){
+            this.setState({titleRequired : true})
+            console.log('title is not selected')
+        } else {
+            this.setState({titleRequired : false})
+            console.log('title has been selected')
+            passCount++;
+        }
+        if (values.firstName === ''){
+            this.setState({fnameRequired : true})
+            console.log('first name is empty')
+        } else {
+            this.setState({fnameRequired : false})
+            console.log('first name is not empty')
+            passCount++;
+        }
+        if (values.lastName === ''){
+            this.setState({lnameRequired : true})
+            console.log('last name is  empty')
+        } else {
+            this.setState({lnameRequired : false})
+            console.log('last name is not empty')
+            passCount++;
+        }
+        if (values.email === ''){
+            this.setState({emailRequired : true})
+            console.log('email is empty')
+        } else {
+            this.setState({emailRequired : false})
+            console.log('email is not empty')
+            passCount++;
+        }
+        if (!validEmailRegex.test(values.email)){
+            this.setState({emailFormat : true})
+            console.log('email format is incorrect')
+        } else {
+            this.setState({emailFormat : false})
+            console.log('email format is good to go')
+            passCount++;
+        }
+        if (values.tel === ''){
+            this.setState({telRequired : true})
+            console.log('tel is empty')
+        } else {
+            this.setState({telRequired : false})
+            console.log('tel is not empty')
+            passCount++;
+        }
+        if (values.tel.length !== 8){
+            this.setState({telFormat : true})
+            console.log('tel format is incorrect')
+        } else {
+            this.setState({telFormat : false})
+            console.log('tel format is good to go')
+            passCount++;
+        }
+        if (passCount >= 7){
+            this.props.nextStep()
+        }
     }
 
     
@@ -49,6 +121,9 @@ class FormOne extends Component{
                                 <MenuItem value={"Ms."}>Ms.</MenuItem>
                             </Select>
                         </FormControl>
+                        {(this.state.titleRequired) ? (<span>required</span>) : ('')}
+
+                        
                     </Grid>
                     <Grid 
                         item 
@@ -66,6 +141,7 @@ class FormOne extends Component{
                             defaultValue={values.firstName}
                             fullWidth
                                 />
+                        {(this.state.fnameRequired) ? (<span>required</span>) : ('')}
                     </Grid>
                     <Grid 
                         item 
@@ -83,6 +159,7 @@ class FormOne extends Component{
                             defaultValue={values.lastName}
                             fullWidth
                                 />
+                        {(this.state.lnameRequired) ? (<span>required</span>) : ('')}
                     </Grid>
                     <Grid 
                         item 
@@ -133,6 +210,8 @@ class FormOne extends Component{
                             defaultValue={values.email}
                             fullWidth
                          />
+                         {(this.state.emailRequired) ? (<span>required</span>) : ('')}
+                         {(this.state.emailFormat) ? (<span>wrong format</span>) : ('')}
                     </Grid>
                     <Grid 
                         item 
@@ -151,6 +230,8 @@ class FormOne extends Component{
                             defaultValue={values.tel}
                             fullWidth
                             />
+                            {(this.state.telRequired) ? (<span>required</span>) : ('')}
+                            {(this.state.telFormat) ? (<span>Must have 8 digits</span>) : ('')}
                     </Grid>
                     <Grid 
                         item 
@@ -159,24 +240,24 @@ class FormOne extends Component{
                         lg={12}
                         sm={12} 
                         xs={12} >
-                        {
+                        {/* {
                         ((values.title != "") && (values.firstName != "") && (values.lastName != "") && (values.dob != "") && (values.email != "") && (values.tel != ""))
                         ? 
-                            (
+                            ( */}
                                 <Button 
                                     variant="contained"
                                     onClick={this.saveAndContinue}
                                     color="primary">
                                     Next
                                 </Button>
-                            ) : (
+                            {/* ) : (
                                 <Button 
                                     variant="contained"
                                     disabled
                                     color="primary">
                                     Next
                                 </Button>)
-                        }
+                        } */}
                     </Grid>
                 </Grid>
             </div>

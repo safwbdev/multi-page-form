@@ -11,16 +11,71 @@ import Select from '@material-ui/core/Select';
 
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import Checkbox from '@material-ui/core/Checkbox';
 import DatePicker from "react-datepicker";
 
 
 class FormTwo extends Component{
+
+    state = {
+        amountRequired: false,
+        amountFormat: false,
+        tenureRequired: false,
+        purposeRequired: false,
+        agreedTNC: false,
+    }
+
     saveAndContinue = (e) => {
         e.preventDefault();
-        this.props.nextStep();
+        let { values } = this.props;
+        let passCount = 0;
+
+        if (values.amount === ''){
+            this.setState({amountRequired : true})
+            // console.log('amount is empty')
+        } else {
+            this.setState({amountRequired : false})
+            // console.log('amount is not empty')
+            passCount++;
+        }
+        if ((values.amount >= 1) && (values.amount <= 1000000)){
+            this.setState({amountFormat : false})
+            console.log('amount is alrite')
+            passCount++;
+        } else {
+            this.setState({amountFormat : true})
+            console.log('amount is not within range')
+        }
+        if (values.tenure === ''){
+            this.setState({tenureRequired : true})
+            // console.log('tebure has not been selected')
+        } else {
+            this.setState({tenureRequired : false})
+            // console.log('tebure has been selected')
+            passCount++;
+        }
+        if (values.purpose === ''){
+            this.setState({purposeRequired : true})
+            // console.log('purpose has not been selected')
+        } else {
+            this.setState({purposeRequired : false})
+            // console.log('purpose has been selected')
+            passCount++;
+        }
+        if (!values.tnc){
+            this.setState({agreedTNC : true})
+            // console.log('disagreed')
+        } else {
+            this.setState({agreedTNC : false})
+            // console.log('agreed')
+            passCount++;
+
+        }
+// console.log(passCount)
+if (passCount >= 5){
+    this.props.nextStep();
+
+}
     }
 
     goBack  = (e) => {
@@ -48,6 +103,7 @@ class FormTwo extends Component{
                         sm={6} 
                         xs={12} >
                         <TextField 
+                            required
                             id="amount" 
                             label="Loan Amount" 
                             variant="outlined"
@@ -56,6 +112,8 @@ class FormTwo extends Component{
                             defaultValue={values.amount}
                             fullWidth
                             />
+                            {(this.state.amountRequired) ? (<span>required</span>) : ('')}
+                            {(this.state.amountFormat) ? (<span>Must be between 1 and 1,000,000</span>) : ('')}
                     </Grid>
                     <Grid 
                         item 
@@ -64,7 +122,7 @@ class FormTwo extends Component{
                         sm={6} 
                         xs={12} >
                         <FormControl variant="outlined" fullWidth>
-                            <InputLabel id="demo-simple-select-label">Loan Tenure</InputLabel>
+                            <InputLabel id="demo-simple-select-label">Loan Tenure*</InputLabel>
                             <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
@@ -79,6 +137,7 @@ class FormTwo extends Component{
                                 <MenuItem value={6}>6 Years</MenuItem>
                             </Select>
                         </FormControl>
+                        {(this.state.tenureRequired) ? (<span>required</span>) : ('')}
                     </Grid>
                     <Grid 
                         item 
@@ -87,7 +146,7 @@ class FormTwo extends Component{
                         sm={6} 
                         xs={12} >
                         <FormControl variant="outlined" fullWidth>
-                            <InputLabel id="demo-simple-select-label">Loan Purpose</InputLabel>
+                            <InputLabel id="demo-simple-select-label">Loan Purpose*</InputLabel>
                             <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
@@ -103,6 +162,7 @@ class FormTwo extends Component{
                                 <MenuItem value={"Investment"}>Investment</MenuItem>
                             </Select>
                         </FormControl>
+                        {(this.state.purposeRequired) ? (<span>required</span>) : ('')}
                     </Grid>
                     <Grid 
                         item 
@@ -112,8 +172,9 @@ class FormTwo extends Component{
                         xs={12} >
 
                             {values.purpose === "Wedding" ? (
+                            // <label>Wedding Date*</label>
                                 <DatePicker
-                                selected={new Date}
+                                selected={new Date()}
                                 className=""
                                 dateFormat="yyyy-mm-dd"
                                 onChange={this.props.saveDate('weddingDate')}
@@ -133,6 +194,8 @@ class FormTwo extends Component{
 
                         <FormGroup row>
                             <FormControlLabel control={<Checkbox checked={this.tnc} onChange={this.props.tncAgree} value="tnc" />} label="I agree to the Terms and conditions" />
+
+                        {(this.state.agreedTNC) ? (<span>Please agree to the Terms & Conditions</span>) : ('')}
                         </FormGroup>
                     </Grid>
                     <Grid 
@@ -156,24 +219,24 @@ class FormTwo extends Component{
                         lg={6}
                         sm={6} 
                         xs={6} >
-                        {((values.amount != "") && (values.tenure != "") && (values.purpose != "") && (values.tnc) )
+                        {/* {((values.amount !== "") && (values.tenure !== "") && (values.purpose !== "") && (values.tnc) )
                         
                          ? 
-                            (
+                            ( */}
                                 <Button 
                                     variant="contained"
                                     onClick={this.saveAndContinue}
                                     color="primary">
                                     Next
                                 </Button>
-                            ) : (
+                            {/* ) : (
                                 <Button 
                                     variant="contained"
                                     disabled
                                     color="primary">
                                     Next
                                 </Button>)
-                        }
+                        } */}
                     </Grid>
                 </Grid>
             </div>

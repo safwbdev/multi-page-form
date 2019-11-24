@@ -15,7 +15,7 @@ class Confirmation extends Component{
     }
 
     render(){
-        const {values: { title, firstName, lastName, dob, gender, email, tel, amount, tenure, purpose, weddingDate, tnc }} = this.props;
+        const {values: { title, firstName, lastName, dob, gender, email, tel, amount, tenure, purpose, weddingDate }} = this.props;
 
         console.log(this.props.values);
 
@@ -166,40 +166,29 @@ class Confirmation extends Component{
                         xs={6} >
                        { purpose }
                     </Grid>
+
+                    {(purpose === "Wedding") ? (
+                        <div>
+
                     <Grid 
-                        item 
-                        align="right"
-                        xl={2}
-                        lg={2}
-                        sm={2}
-                        xs={6} >
-                        wedding Date :
-                    </Grid>
-                    <Grid 
-                        item 
-                        xl={10}
-                        lg={10}
-                        sm={10}
-                        xs={6} >
-                        {Moment(weddingDate).format('YYYY-MM-DD')}
-                    </Grid>
-                    {/* <Grid 
-                        item 
-                        align="right"
-                        xl={2}
-                        lg={2}
-                        sm={2}
-                        xs={6} >
-                        TNC :
-                    </Grid>
-                    <Grid 
-                        item 
-                        xl={10}
-                        lg={10}
-                        sm={10}
-                        xs={6} >
-                       { tnc }
-                    </Grid> */}
+                    item 
+                    align="right"
+                    xl={2}
+                    lg={2}
+                    sm={2}
+                    xs={6} >
+                    wedding Date :
+                </Grid>
+                <Grid 
+                    item 
+                    xl={10}
+                    lg={10}
+                    sm={10}
+                    xs={6} >
+                    {console.log(weddingDate)}
+                </Grid>
+                    </div>
+                    ) : ('')}
                     <Grid 
                         item 
                         align="right"
