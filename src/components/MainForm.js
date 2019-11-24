@@ -5,7 +5,7 @@ import Confirmation from './Confirmation';
 
 class MainForm extends Component {
     state = {
-        step: 1,
+        step: 2,
         title: '',
         firstName: '',
         lastName: '',
@@ -36,7 +36,6 @@ class MainForm extends Component {
 
     tncAgree = () => {
         const { tnc } = this.state
-        console.log('agreed')
         this.setState({
             tnc : !tnc
         })
@@ -45,18 +44,18 @@ class MainForm extends Component {
     restore = () => {
         this.setState({
             step: 1,
-            title: undefined,
-            firstName: undefined,
-            lastName: undefined,
+            title: '',
+            firstName: '',
+            lastName: '',
             dob: new Date(),
-            gender: undefined,
-            email: undefined,
-            tel: undefined,
+            gender: '',
+            email: '',
+            tel: '',
             amount: '',
             tenure: '',
             purpose: '',
             weddingDate: new Date(),
-            tnc: false,
+            tnc: false
         })
     }
     handleChange = input => event => {
@@ -64,7 +63,6 @@ class MainForm extends Component {
     }
 
     saveDate = input => date => {
-        console.log("date is : " + date)
         this.setState({ [input]: date })
     }
     

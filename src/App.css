@@ -23,3 +23,38 @@
 select{
   display: block !important;
 }
+.errMsg{
+  color: red;
+  margin-top: 5px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+label.datepickerLabel{
+  position: relative;
+  background: #ffffff;
+  top: -12px;
+  font-size: 14px;
+  left: 10px;
+}
+.react-datepicker-wrapper {
+  top: -20px;
+  position: relative;
+  width: 100%;
+  float: left;
+}
+.react-datepicker-wrapper .react-datepicker__input-container{
+  border: 1px solid #c4c4c4;
+  border-radius: 4px;
+
+}
+.react-datepicker-wrapper .react-datepicker__input-container input{
+  width: 100%;
+  cursor: pointer;
+}
+.MuiToolbar-root.MuiToolbar-regular.MuiToolbar-gutters{
+  justify-content: center;
+}
+.output{
+  font-weight: bold;
+}
