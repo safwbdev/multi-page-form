@@ -32,50 +32,37 @@ class FormTwo extends Component{
 
         if (values.amount === ''){
             this.setState({amountRequired : true})
-            // console.log('amount is empty')
         } else {
             this.setState({amountRequired : false})
-            // console.log('amount is not empty')
             passCount++;
         }
         if ((values.amount >= 1) && (values.amount <= 1000000)){
             this.setState({amountFormat : false})
-            console.log('amount is alrite')
             passCount++;
         } else {
             this.setState({amountFormat : true})
-            console.log('amount is not within range')
         }
         if (values.tenure === ''){
             this.setState({tenureRequired : true})
-            // console.log('tebure has not been selected')
         } else {
             this.setState({tenureRequired : false})
-            // console.log('tebure has been selected')
             passCount++;
         }
         if (values.purpose === ''){
             this.setState({purposeRequired : true})
-            // console.log('purpose has not been selected')
         } else {
             this.setState({purposeRequired : false})
-            // console.log('purpose has been selected')
             passCount++;
         }
         if (!values.tnc){
             this.setState({agreedTNC : true})
-            // console.log('disagreed')
         } else {
             this.setState({agreedTNC : false})
-            // console.log('agreed')
             passCount++;
-
         }
-// console.log(passCount)
-if (passCount >= 5){
-    this.props.nextStep();
-
-}
+        if (passCount >= 5){
+            this.props.nextStep();
+        }
     }
 
     goBack  = (e) => {
@@ -104,6 +91,7 @@ if (passCount >= 5){
                         xs={12} >
                         <TextField 
                             required
+                            type="number"
                             id="amount" 
                             label="Loan Amount" 
                             variant="outlined"
@@ -170,13 +158,10 @@ if (passCount >= 5){
                         lg={6}
                         sm={6} 
                         xs={12} >
-
                             {values.purpose === "Wedding" ? (
-                            // <label>Wedding Date*</label>
                                 <DatePicker
-                                selected={new Date()}
-                                className=""
-                                dateFormat="yyyy-mm-dd"
+                                selected={values.weddingDate}
+                                dateFormat="yyyy-MM-dd"
                                 onChange={this.props.saveDate('weddingDate')}
                             />
                             ) : ("")

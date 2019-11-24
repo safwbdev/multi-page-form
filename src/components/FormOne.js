@@ -28,58 +28,44 @@ class FormOne extends Component{
 
         if (values.title === ''){
             this.setState({titleRequired : true})
-            console.log('title is not selected')
         } else {
             this.setState({titleRequired : false})
-            console.log('title has been selected')
             passCount++;
         }
         if (values.firstName === ''){
             this.setState({fnameRequired : true})
-            console.log('first name is empty')
         } else {
             this.setState({fnameRequired : false})
-            console.log('first name is not empty')
             passCount++;
         }
         if (values.lastName === ''){
             this.setState({lnameRequired : true})
-            console.log('last name is  empty')
         } else {
             this.setState({lnameRequired : false})
-            console.log('last name is not empty')
             passCount++;
         }
         if (values.email === ''){
             this.setState({emailRequired : true})
-            console.log('email is empty')
         } else {
             this.setState({emailRequired : false})
-            console.log('email is not empty')
             passCount++;
         }
         if (!validEmailRegex.test(values.email)){
             this.setState({emailFormat : true})
-            console.log('email format is incorrect')
         } else {
             this.setState({emailFormat : false})
-            console.log('email format is good to go')
             passCount++;
         }
         if (values.tel === ''){
             this.setState({telRequired : true})
-            console.log('tel is empty')
         } else {
             this.setState({telRequired : false})
-            console.log('tel is not empty')
             passCount++;
         }
         if (values.tel.length !== 8){
             this.setState({telFormat : true})
-            console.log('tel format is incorrect')
         } else {
             this.setState({telFormat : false})
-            console.log('tel format is good to go')
             passCount++;
         }
         if (passCount >= 7){
@@ -170,7 +156,7 @@ class FormOne extends Component{
                         <DatePicker
                                 selected={values.dob}
                                 className="MuiInputBase-input MuiOutlinedInput-input"
-                                dateFormat="yyyy-mm-dd"
+                                dateFormat="yyyy-MM-dd"
                                 onChange={this.props.saveDate('dob')}
                             />
                     </Grid>

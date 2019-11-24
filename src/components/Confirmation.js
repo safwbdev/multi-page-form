@@ -79,7 +79,7 @@ class Confirmation extends Component{
                         lg={10}
                         sm={10}
                         xs={6} >
-                        { gender }
+                        {(gender === "") ? ("NA") :(gender)}
                     </Grid>
                     <Grid 
                         item 
@@ -168,7 +168,6 @@ class Confirmation extends Component{
                     </Grid>
 
                     {(purpose === "Wedding") ? (
-                        <div>
 
                     <Grid 
                     item 
@@ -179,15 +178,16 @@ class Confirmation extends Component{
                     xs={6} >
                     wedding Date :
                 </Grid>
+                ) : ('')}
+                {(purpose === "Wedding") ? (
                 <Grid 
                     item 
                     xl={10}
                     lg={10}
                     sm={10}
                     xs={6} >
-                    {console.log(weddingDate)}
+                    {Moment(weddingDate).format('YYYY-MM-DD')}
                 </Grid>
-                    </div>
                     ) : ('')}
                     <Grid 
                         item 

@@ -16,7 +16,7 @@ class MainForm extends Component {
         amount: '',
         tenure: '',
         purpose: '',
-        weddingDate: '',
+        weddingDate: new Date(),
         tnc: false
     }
 
@@ -55,7 +55,7 @@ class MainForm extends Component {
             amount: '',
             tenure: '',
             purpose: '',
-            weddingDate: '',
+            weddingDate: new Date(),
             tnc: false,
         })
     }
@@ -64,6 +64,7 @@ class MainForm extends Component {
     }
 
     saveDate = input => date => {
+        console.log("date is : " + date)
         this.setState({ [input]: date })
     }
     
