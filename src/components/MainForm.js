@@ -34,22 +34,29 @@ class MainForm extends Component {
         })
     }
 
+    tncAgree = () => {
+        const { tnc } = this.state
+        console.log('agreed')
+        this.setState({
+            tnc : !tnc
+        })
+    }
+
     restore = () => {
-        // const { step } = this.state
         this.setState({
             step: 1,
-        title: '',
-        firstName: '',
-        lastName: '',
-        dob: '',
-        gender: '',
-        email: '',
-        tel: '',
-        amount: '',
-        tenure: '',
-        purpose: '',
-        weddingDate: '',
-        tnc: false
+            title: '',
+            firstName: '',
+            lastName: '',
+            dob: '',
+            gender: '',
+            email: '',
+            tel: '',
+            amount: '',
+            tenure: '',
+            purpose: '',
+            weddingDate: '',
+            tnc: false
         })
     }
 
@@ -74,6 +81,7 @@ class MainForm extends Component {
                     nextStep={this.nextStep}
                     prevStep={this.prevStep}
                     handleChange = {this.handleChange}
+                    tncAgree = {this.tncAgree}
                     values={values}
                     />
         case 3:

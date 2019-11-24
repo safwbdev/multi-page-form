@@ -129,7 +129,7 @@ class FormTwo extends Component{
                             {/* checkbox goes here */}
 
                         <FormGroup row>
-                            <FormControlLabel control={<Checkbox checked={this.tnc} onChange={this.props.handleChange('tnc')} value="tnc" />} label="I agree to the Terms and conditions" />
+                            <FormControlLabel control={<Checkbox checked={this.tnc} onChange={this.props.tncAgree} value="tnc" />} label="I agree to the Terms and conditions" />
                         </FormGroup>
                     </Grid>
                     <Grid 

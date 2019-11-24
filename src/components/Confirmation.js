@@ -14,7 +14,9 @@ class Confirmation extends Component{
     }
 
     render(){
-        const {values: { title, firstName, lastName, dob, gender, email, tel, amount, tenure, purpose, weddingDate }} = this.props;
+        const {values: { title, firstName, lastName, dob, gender, email, tel, amount, tenure, purpose, weddingDate, tnc }} = this.props;
+
+        console.log(this.props.values);
 
         return(
             <div>
@@ -23,160 +25,186 @@ class Confirmation extends Component{
                         item 
                         xl={12}
                         lg={12}
-                        sm={12} 
+                        sm={12}
                         xs={12} >
                         <h1>Confirmation</h1>
                     </Grid>
                     <Grid 
                         item 
-                        xl={6}
-                        lg={6}
-                        sm={6} 
+                        align="right"
+                        xl={2}
+                        lg={2}
+                        sm={2}
                         xs={6} >
                             Full Name: 
                     </Grid>
                     <Grid 
                         item 
-                        xl={6}
-                        lg={6}
-                        sm={6} 
+                        xl={10}
+                        lg={10}
+                        sm={10}
                         xs={6} >
                         {title} {firstName} {lastName}
                     </Grid>
                     <Grid 
                         item 
-                        xl={6}
-                        lg={6}
-                        sm={6} 
+                        align="right"
+                        xl={2}
+                        lg={2}
+                        sm={2}
                         xs={6} >
                         Date of Birth: 
                     </Grid>
                     <Grid 
                         item 
-                        xl={6}
-                        lg={6}
-                        sm={6} 
+                        xl={10}
+                        lg={10}
+                        sm={10}
                         xs={6} >
                         {dob}
                     </Grid>
                     <Grid 
                         item 
-                        xl={6}
-                        lg={6}
-                        sm={6} 
+                        align="right"
+                        xl={2}
+                        lg={2}
+                        sm={2}
                         xs={6} >
                         Gender:
                     </Grid>
                     <Grid 
                         item 
-                        xl={6}
-                        lg={6}
-                        sm={6} 
+                        xl={10}
+                        lg={10}
+                        sm={10}
                         xs={6} >
                         { gender }
                     </Grid>
                     <Grid 
                         item 
-                        xl={6}
-                        lg={6}
-                        sm={6}
+                        align="right"
+                        xl={2}
+                        lg={2}
+                        sm={2}
                         xs={6} >
                         Email Address :
                     </Grid>
                     <Grid 
                         item 
-                        xl={6}
-                        lg={6}
-                        sm={6} 
+                        xl={10}
+                        lg={10}
+                        sm={10}
                         xs={6} >
                        { email}
                     </Grid>
                     <Grid 
                         item 
-                        xl={6}
-                        lg={6}
-                        sm={6} 
+                        align="right"
+                        xl={2}
+                        lg={2}
+                        sm={2}
                         xs={6} >
                         Telephone No. :
                     </Grid>
                     <Grid 
                         item 
-                        xl={6}
-                        lg={6}
-                        sm={6} 
+                        xl={10}
+                        lg={10}
+                        sm={10}
                         xs={6} >
                        { tel }
                     </Grid>
                     <Grid 
+                        align="right"
                         item 
-                        xl={6}
-                        lg={6}
-                        sm={6} 
+                        xl={2}
+                        lg={2}
+                        sm={2}
                         xs={6} >
                         Loan Amount :
                     </Grid>
                     <Grid 
                         item 
-                        xl={6}
-                        lg={6}
-                        sm={6} 
+                        xl={10}
+                        lg={10}
+                        sm={10}
                         xs={6} >
                        { amount }
                     </Grid>
                     <Grid 
                         item 
-                        xl={6}
-                        lg={6}
-                        sm={6} 
+                        align="right"
+                        xl={2}
+                        lg={2}
+                        sm={2}
                         xs={6} >
                         Loan Tenure (Duration) :
                     </Grid>
                     <Grid 
                         item 
-                        xl={6}
-                        lg={6}
-                        sm={6} 
+                        xl={10}
+                        lg={10}
+                        sm={10}
                         xs={6} >
-                       { tenure }
+                       { tenure } Years
                     </Grid>
                     <Grid 
                         item 
-                        xl={6}
-                        lg={6}
-                        sm={6} 
+                        align="right"
+                        xl={2}
+                        lg={2}
+                        sm={2}
                         xs={6} >
                         Loan Purpose :
                     </Grid>
                     <Grid 
                         item 
-                        xl={6}
-                        lg={6}
-                        sm={6} 
+                        xl={10}
+                        lg={10}
+                        sm={10}
                         xs={6} >
                        { purpose }
                     </Grid>
                     <Grid 
                         item 
-                        xl={6}
-                        lg={6}
-                        sm={6} 
+                        align="right"
+                        xl={2}
+                        lg={2}
+                        sm={2}
                         xs={6} >
                         wedding Date :
                     </Grid>
                     <Grid 
                         item 
-                        xl={6}
-                        lg={6}
-                        sm={6} 
+                        xl={10}
+                        lg={10}
+                        sm={10}
                         xs={6} >
                        { weddingDate }
                     </Grid>
+                    {/* <Grid 
+                        item 
+                        align="right"
+                        xl={2}
+                        lg={2}
+                        sm={2}
+                        xs={6} >
+                        TNC :
+                    </Grid>
+                    <Grid 
+                        item 
+                        xl={10}
+                        lg={10}
+                        sm={10}
+                        xs={6} >
+                       { tnc }
+                    </Grid> */}
                     <Grid 
                         item 
                         align="right"
                         xl={12}
                         lg={12}
-                        sm={12} 
+                        sm={12}
                         xs={12} >
                         <Button 
                             variant="contained"
@@ -186,22 +214,6 @@ class Confirmation extends Component{
                         </Button>
                     </Grid>
                 </Grid>
-                {/* <h1 className="ui centered">Confirm your Details</h1>
-                <p>Click Confirm if the following details have been correctly entered</p>
-                
-                <div class="row">
-                    <div class="input-field col s6">{ title }</div>
-                    <div class="input-field col s6">{ firstName }</div>
-                    <div class="input-field col s6">{ lastName }</div>
-                    <div class="input-field col s6">{ dob }</div>
-                    <div class="input-field col s6">{ gender }</div>
-                    <div class="input-field col s6">{ email }</div>
-                    <div class="input-field col s6">{ tel }</div>
-                    <div class="input-field col s6">{ amount }</div>
-                    <div class="input-field col s6">{ tenure }</div>
-                    <div class="input-field col s6">{ purpose }</div>
-                    <div class="input-field col s6">{ weddingDate }</div>
-            </div> */}
             </div>
         )
     }
