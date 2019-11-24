@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import FormOne from './FormOne';
 import FormTwo from './FormTwo';
 import Confirmation from './Confirmation';
-import Success from './Success';
 
 class MainForm extends Component {
     state = {
@@ -84,8 +83,6 @@ class MainForm extends Component {
                     restoreBack={this.restore}
                     values={values}
                     />
-        case 4:
-            return <Success />
         }
     }
 }

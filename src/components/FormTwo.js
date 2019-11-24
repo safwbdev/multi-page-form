@@ -9,6 +9,13 @@ import Select from '@material-ui/core/Select';
 
 
 
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+
+
 class FormTwo extends Component{
     saveAndContinue = (e) => {
         e.preventDefault();
@@ -119,8 +126,12 @@ class FormTwo extends Component{
                         lg={12}
                         sm={12} 
                         xs={12} >
-                            checkbox goes here
-                            </Grid>
+                            {/* checkbox goes here */}
+
+                        <FormGroup row>
+                            <FormControlLabel control={<Checkbox checked={this.tnc} onChange={this.props.handleChange('tnc')} value="tnc" />} label="I agree to the Terms and conditions" />
+                        </FormGroup>
+                    </Grid>
                     <Grid 
                         item 
                         align="left"
@@ -150,72 +161,6 @@ class FormTwo extends Component{
                         </Button>
                     </Grid>
                 </Grid>
-                {/* <h1>Step 2</h1>
-                <div class="row">
-                    <div class="input-field col s6">
-                        <input 
-                            id="amount" 
-                            type="text" 
-                            placeholder='Loan Amount'
-                            onChange={this.props.handleChange('amount')}
-                            defaultValue={values.firstName}
-                            class="validate" />
-                        <label class="active" for="amount">Loan Amount</label>
-                    </div>
-                    <div class="input-field col s6">
-                    <select id="tenure">
-                            <option value="" disabled selected>Select Title</option>
-                            <option value="1">1 Year</option>
-                            <option value="2">2 Years</option>
-                            <option value="3">3 Years</option>
-                            <option value="4">4 Years</option>
-                            <option value="5">5 Years</option>
-                            <option value="6">6 Years</option>
-                        </select>
-                        <label class="active" for="tenure">Loan Tenure</label>
-                    </div>
-                    <div class="input-field col s6">
-                    <select id="purpose">
-                            <option value="" disabled selected>Select Title</option>
-                            <option value="Renovation">Renovation</option>
-                            <option value="Car">Car</option>
-                            <option value="Wedding">Wedding</option>
-                            <option value="Travel">Travel</option>
-                            <option value="Business Expansion">Business Expansion</option>
-                            <option value="Education">Education</option>
-                            <option value="Investment">Investment</option>
-                        </select>
-                        <label class="active" for="purpose">Loan Purpose</label>
-                    </div>
-                    <div class="input-field col s6">
-                        <input 
-                            id="weddingDate" 
-                            type="text" 
-                            placeholder='YYYY-MM-DD'
-                            onChange={this.props.handleChange('weddingDate')}
-                            defaultValue={values.weddingDate}
-                            class="validate" />
-                        <label class="active" for="weddingDate">Wedding Date</label>
-                    </div>
-                    <div class="input-field col s6">
-                    <p>
-      <label>
-        <input type="checkbox" />
-        <span>I agree to terms & conditions</span>
-      </label>
-    </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <button class="btn waves-effect waves-light" type="submit" name="action" onClick={this.goBack}>Go Back
-                            <i class="material-icons right">send</i>
-                        </button>
-                        <button class="btn waves-effect waves-light" type="submit" name="action" onClick={this.saveAndContinue}>Save
-                            <i class="material-icons right">send</i>
-                        </button>
-                    </div>
-                </div> */}
             </div>
         )
     }
