@@ -25,7 +25,7 @@ class FormOne extends Component{
                         lg={12}
                         sm={12} 
                         xs={12} >
-                        <h1>Step 1</h1>
+                        <h1>Personal Details</h1>
                     </Grid>
                     <Grid 
                         item 
@@ -34,7 +34,7 @@ class FormOne extends Component{
                         sm={2} 
                         xs={12} >
                         <FormControl variant="outlined" fullWidth>
-                            <InputLabel id="demo-simple-select-label">Title</InputLabel>
+                            <InputLabel id="demo-simple-select-label">Title*</InputLabel>
                             <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
@@ -54,6 +54,7 @@ class FormOne extends Component{
                         sm={5} 
                         xs={12} >
                         <TextField 
+                            required
                             id="firstName" 
                             label="First Name" 
                             variant="outlined"
@@ -70,6 +71,7 @@ class FormOne extends Component{
                         sm={5} 
                         xs={12} >
                         <TextField 
+                            required
                             id="lastName" 
                             label="Last Name" 
                             variant="outlined"
@@ -102,7 +104,7 @@ class FormOne extends Component{
                         sm={6} 
                         xs={12} >
                         <FormControl variant="outlined" fullWidth>
-                            <InputLabel id="demo-simple-select-label">Gender</InputLabel>
+                            <InputLabel id="demo-simple-select-label">Gender (Optional)</InputLabel>
                             <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
@@ -122,6 +124,7 @@ class FormOne extends Component{
                         sm={6} 
                         xs={12} >
                         <TextField 
+                            required
                             id="email" 
                             label="Email Address" 
                             variant="outlined"
@@ -138,6 +141,8 @@ class FormOne extends Component{
                         sm={6} 
                         xs={12} >
                         <TextField 
+                            required
+                            type="number"
                             id="tel" 
                             label="Telephone No." 
                             variant="outlined"

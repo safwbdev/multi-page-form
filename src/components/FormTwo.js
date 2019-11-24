@@ -38,7 +38,7 @@ class FormTwo extends Component{
                         lg={12}
                         sm={12} 
                         xs={12} >
-                        <h1>Step 2</h1>
+                        <h1>Loan Details</h1>
                     </Grid>
                     <Grid 
                         item 
